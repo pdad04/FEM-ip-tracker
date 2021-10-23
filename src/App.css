@@ -1,38 +1,106 @@
-.App {
-  text-align: center;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+img {
+  width: 100%;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input {
+  height: 2.5rem;
+  width: 100%;
+  max-width: 500px;
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+  padding: 0 1rem;
+  border: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+input:focus-visible {
+  outline: none;
+}
+
+input:hover {
+  cursor: pointer;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  height: 2.5rem;
+  width: 3.5rem;
+  background-color: hsl(0, 0%, 0%);
+  border-top-right-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  background-image: url("./images/icon-arrow.svg");
+  background-size: 1rem 1rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
+  margin: 1.5rem;
+}
+
+.submit-arrow {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.main__header {
+  background: url("./images/pattern-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 15rem;
+}
+
+form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.main__search-results {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: hsl(0, 0%, 100%);
+  z-index: 2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main__search-result-input {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-inline: auto;
+}
+
+.main__search-results-output {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 0%);
+  text-align: center;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.output-header {
+  margin-top: 0.75rem;
+}
+
+.output-text {
+  margin-top: 0.75rem;
+}
+
+#mapid {
+  height: 500px;
+  z-index: 1;
 }
