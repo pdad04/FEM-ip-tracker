@@ -23,6 +23,7 @@ img {
 input {
   height: 2.5rem;
   width: 100%;
+  font-size: 1.5rem;
   max-width: 500px;
   text-align: center;
   border-top-left-radius: 0.75rem;
@@ -110,13 +111,14 @@ input:hover {
 }
 
 .error::after {
-  content: "An error occurred. Please try again";
+  content: "An error occurred or search field is empty. Please try again";
   position: absolute;
   color: hsl(0, 100%, 50%);
+  font-size: calc(0.75rem + 0.5vw);
   font-weight: 700;
   bottom: -2rem;
   width: 100%;
-  margin: 0 auto;
+  margin: 0rem auto;
 }
 
 .main__search-results-output {
@@ -154,12 +156,6 @@ input:hover {
   margin: 1rem;
 }
 
-/* .leaflet-control-container {
-  position: absolute;
-  bottom: 3rem;
-  right: 3rem;
-} */
-
 .first {
   animation: MoveUpDown 1.25s linear 0.5s infinite;
 }
@@ -194,6 +190,10 @@ input:hover {
   z-index: 1;
 }
 
+::placeholder {
+  font-size: 0.75rem;
+}
+
 @media (min-width: 930px) {
   input {
     font-size: 1.5rem;
@@ -201,6 +201,10 @@ input:hover {
 
   ::placeholder {
     font-size: 1rem;
+  }
+
+  .error::after {
+    bottom: -1.5rem;
   }
 
   .main__search-results-output {

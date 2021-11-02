@@ -30,6 +30,8 @@ function App() {
   }
 
   const getData = async (e) => {
+    e.preventDefault();
+    console.log(searchText);
     const ip = searchText.match(numberRegEx);
 
     setFetched(false);
@@ -37,7 +39,13 @@ function App() {
     setError(false);
     
     // Check if text field has an IP or domain to perform correct search
-    if(!ip) {
+
+    if(searchText === "") {
+      setError(true);
+      setIsSearching(false);
+      setResponseData({isp: '--', ip: '--', location: {city:'-', region:'-', timezone:'--', lat:37.2757113, lng:-104.6553407 }});
+      return;
+    }else if(!ip) {
       try {
         const response = await axios.get(`${url}domain=${searchText}`);
         const {ip, location, isp} = response.data;
@@ -45,7 +53,7 @@ function App() {
       } catch (error) {
         setIsSearching(false);
         setError(true);
-        setResponseData({isp: '', ip: '', location: {city:'', region:'', timezone:'', lat:37.2757113, lng:-104.6553407 }});
+        setResponseData({isp: '--', ip: '--', location: {city:'-', region:'-', timezone:'--', lat:37.2757113, lng:-104.6553407 }});
       }
     }else {
       try {
@@ -55,7 +63,7 @@ function App() {
       } catch (error) {
         setIsSearching(false);
         setError(true);
-        setResponseData({isp: '', ip: '', location: {city:'', region:'', timezone:'', lat:37.2757113, lng:-104.6553407 }});
+        setResponseData({isp: '--', ip: '--', location: {city:'-', region:'-', timezone:'--', lat:37.2757113, lng:-104.6553407 }});
       }
     }
 
@@ -79,9 +87,9 @@ function App() {
       <section className="main__search-results container">
         <h2 className="main__search-results__header">IP Address Tracker</h2>
         <div className={`main__search-result-input ${error ? "error": "" }`}>
-          <form>
+          <form onSubmit={getData}>
             <input type="text" placeholder="Search for any IP address or domain" tabIndex={1} onChange={onChange} />
-            <div className="btn" tabIndex={2} onClick={getData}></div>
+            <div className="btn" tabIndex={2} onClick={getData} onKeyPress={(e) => e.code === "Enter" ? getData(e) : null}></div>
           </form>
         </div>
         { isSearching ? 
